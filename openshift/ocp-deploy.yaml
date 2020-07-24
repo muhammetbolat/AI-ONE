@@ -1,0 +1,89 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"apps.openshift.io/v1","kind":"DeploymentConfig","metadata":{"annotations":{},"labels":{"app":"onentai"},"name":"onentai","namespace":"sharedlocation"},"spec":{"replicas":1,"selector":{"app":"onentai","deploymentconfig":"onentai"},"strategy":{"activeDeadlineSeconds":21600,"resources":{},"rollingParams":{"intervalSeconds":1,"maxSurge":"25%","maxUnavailable":"25%","timeoutSeconds":600,"updatePeriodSeconds":1},"type":"Rolling"},"template":{"metadata":{"annotations":{"openshift.io/generated-by":"OpenShiftWebConsole"},"creationTimestamp":null,"labels":{"app":"onentai","deploymentconfig":"onentai"}},"spec":{"containers":[{"image":"artifactory.turkcell.com.tr/local-docker-dist-dev/com/turkcell/onent-planlama/ai-one:0.0.0.2","imagePullPolicy":"Always","name":"onentai","ports":[{"containerPort":8080,"protocol":"TCP"}],"resources":{}}],"dnsPolicy":"ClusterFirst","restartPolicy":"Always","securityContext":{},"terminationGracePeriodSeconds":30}},"test":false,"triggers":[{"type":"ConfigChange"}]}}
+    openshift.io/generated-by: OpenShiftWebConsole
+  creationTimestamp: '2020-04-02T16:32:23Z'
+  generation: 10
+  labels:
+    app: onentai
+  name: onentai
+  namespace: sharedlocation
+  resourceVersion: '155584612'
+  selfLink: >-
+    /apis/apps.openshift.io/v1/namespaces/sharedlocation/deploymentconfigs/onentai
+  uid: 88138fc2-74ff-11ea-89a7-00505697ddc9
+spec:
+  replicas: 1
+  selector:
+    app: onentai
+    deploymentconfig: onentai
+  strategy:
+    activeDeadlineSeconds: 21600
+    resources: {}
+    rollingParams:
+      intervalSeconds: 1
+      maxSurge: 25%
+      maxUnavailable: 25%
+      timeoutSeconds: 600
+      updatePeriodSeconds: 1
+    type: Rolling
+  template:
+    metadata:
+      annotations:
+        openshift.io/generated-by: OpenShiftWebConsole
+      creationTimestamp: null
+      labels:
+        app: onentai
+        deploymentconfig: onentai
+    spec:
+      containers:
+        - env:
+            - name: API_PORT
+              value: '8080'
+          image: >-
+            artifactory.turkcell.com.tr/local-docker-dist-dev/com/turkcell/onent-planlama/ai-one:0.0.0.2
+          imagePullPolicy: Always
+          name: onentai
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      imagePullSecrets:
+        - name: jenkins-artifactory
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+  test: false
+  triggers:
+    - type: ConfigChange
+status:
+  availableReplicas: 1
+  conditions:
+    - lastTransitionTime: '2020-04-02T19:46:07Z'
+      lastUpdateTime: '2020-04-02T19:46:07Z'
+      message: Deployment config has minimum availability.
+      status: 'True'
+      type: Available
+    - lastTransitionTime: '2020-04-02T20:03:01Z'
+      lastUpdateTime: '2020-04-02T20:03:04Z'
+      message: replication controller "onentai-6" successfully rolled out
+      reason: NewReplicationControllerAvailable
+      status: 'True'
+      type: Progressing
+  details:
+    causes:
+      - type: ConfigChange
+    message: config change
+  latestVersion: 6
+  observedGeneration: 10
+  readyReplicas: 1
+  replicas: 1
+  unavailableReplicas: 0
+  updatedReplicas: 1

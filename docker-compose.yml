@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+  aiapi:
+    image: artifactory.turkcell.com.tr/local-docker-dist-dev/com/turkcell/onent-planlama/ai-one:0.0.0.3
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '21110:21110'

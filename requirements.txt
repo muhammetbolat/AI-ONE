@@ -1,0 +1,12 @@
+matplotlib
+numpy
+pandas
+keras
+sklearn
+tensorflow
+xlrd >= 1.0.0
+flask
+flask_cors
+werkzeug
+jsonpickle
+dependency_injector
